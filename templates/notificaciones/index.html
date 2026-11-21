@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h3 mb-3">Notificaciones</h1>
+<ul class="list-group">
+{% for item in items %}<li class="list-group-item d-flex justify-content-between"><span>{{ item }}</span><span class="badge text-bg-primary">Estado actual</span></li>{% endfor %}
+</ul>
+{% endblock %}

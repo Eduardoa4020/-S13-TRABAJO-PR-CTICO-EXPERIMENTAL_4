@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card"><div class="card-body">
+<h1 class="h4">Reporte de estudiantes</h1>
+<p>Cursos: {{ cursos }} | Inscripciones: {{ inscripciones }}</p>
+<table class="table"><thead><tr><th>Matricula</th><th>Nombre</th><th>Email</th></tr></thead><tbody>
+{% for estudiante in estudiantes %}<tr><td>{{ estudiante.matricula }}</td><td>{{ estudiante.nombre }}</td><td>{{ estudiante.email }}</td></tr>{% endfor %}
+</tbody></table>
+<button class="btn btn-secondary" onclick="window.print()">Imprimir / Guardar PDF</button>
+</div></div>
+{% endblock %}
