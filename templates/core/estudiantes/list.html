@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3"><h1 class="h3">Estudiantes</h1><a class="btn btn-primary" href="{% url 'estudiante_create' %}">Nuevo estudiante</a></div>
+<div class="table-responsive card"><table class="table table-striped mb-0"><thead><tr><th>Matricula</th><th>Nombre</th><th>Email</th><th>Estado</th><th></th></tr></thead><tbody>
+{% for estudiante in estudiantes %}<tr><td>{{ estudiante.matricula }}</td><td>{{ estudiante.nombre }}</td><td>{{ estudiante.email }}</td><td>{% if estudiante.activo %}Activo{% else %}Inactivo{% endif %}</td><td><a class="btn btn-sm btn-outline-primary" href="{% url 'estudiante_update' estudiante.pk %}">Editar</a> <a class="btn btn-sm btn-outline-danger" href="{% url 'estudiante_delete' estudiante.pk %}">Eliminar</a></td></tr>
+{% empty %}<tr><td colspan="5">No hay estudiantes registrados.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endblock %}

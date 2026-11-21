@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3">Panel academico</h1>
+  <span class="badge text-bg-secondary">{{ ACTIVE_VARIANT }}</span>
+</div>
+<div class="row g-3">
+  <div class="col-md-4"><div class="card"><div class="card-body"><h2 class="h6">Estudiantes</h2><p class="display-6">{{ total_estudiantes }}</p></div></div></div>
+  <div class="col-md-4"><div class="card"><div class="card-body"><h2 class="h6">Cursos</h2><p class="display-6">{{ total_cursos }}</p></div></div></div>
+  <div class="col-md-4"><div class="card"><div class="card-body"><h2 class="h6">Inscripciones</h2><p class="display-6">{{ total_inscripciones }}</p></div></div></div>
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card col-md-8 mx-auto"><div class="card-body"><h1 class="h4">{% if objeto %}Editar estudiante{% else %}Nuevo estudiante{% endif %}</h1>
+<form method="post">{% csrf_token %}{{ form.as_p }}<button class="btn btn-primary">Guardar</button> <a class="btn btn-secondary" href="{% url 'estudiante_list' %}">Cancelar</a></form>
+</div></div>
+{% endblock %}
