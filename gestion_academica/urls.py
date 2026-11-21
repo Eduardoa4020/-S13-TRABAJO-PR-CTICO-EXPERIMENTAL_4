@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
 from django.contrib.auth import views as auth_views
-from django.urls import path
+from django.urls import include, path
 from core import views as core_views
 
 urlpatterns = [
@@ -33,3 +34,8 @@ urlpatterns = [
     path('cursos/<int:pk>/editar/', core_views.curso_update, name='curso_update'),
     path('cursos/<int:pk>/eliminar/', core_views.curso_delete, name='curso_delete'),
 ]
+
+if settings.ENABLE_REPORTS:
+    urlpatterns.append(path('reportes/', include('reportes.urls')))
+if settings.ENABLE_NOTIFICATIONS:
+    urlpatterns.append(path('notificaciones/', include('notificaciones.urls')))

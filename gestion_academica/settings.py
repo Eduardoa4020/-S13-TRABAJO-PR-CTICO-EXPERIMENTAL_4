@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+from .config_product import ACTIVE_VARIANT, VARIANTS
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,17 @@ INSTALLED_APPS = [
     'core',
 ]
 
+ACTIVE_PRODUCT = VARIANTS[ACTIVE_VARIANT]
+ACTIVE_VARIANT_NAME = ACTIVE_VARIANT
+ENABLE_REPORTS = ACTIVE_PRODUCT['ENABLE_REPORTS']
+ENABLE_NOTIFICATIONS = ACTIVE_PRODUCT['ENABLE_NOTIFICATIONS']
+PRODUCT_NAME = ACTIVE_PRODUCT['PRODUCT_NAME']
+
+if ENABLE_REPORTS:
+    INSTALLED_APPS.append('reportes')
+if ENABLE_NOTIFICATIONS:
+    INSTALLED_APPS.append('notificaciones')
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -62,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.product_variant',
             ],
         },
     },

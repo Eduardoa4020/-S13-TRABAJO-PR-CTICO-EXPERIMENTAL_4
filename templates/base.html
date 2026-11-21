@@ -19,6 +19,12 @@
         <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Inicio</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'estudiante_list' %}">Estudiantes</a></li>
         <li class="nav-item"><a class="nav-link" href="{% url 'curso_list' %}">Cursos</a></li>
+        {% if ENABLE_REPORTS %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'reportes:indice' %}">Reportes</a></li>
+        {% endif %}
+        {% if ENABLE_NOTIFICATIONS %}
+        <li class="nav-item"><a class="nav-link" href="{% url 'notificaciones:indice' %}">Notificaciones</a></li>
+        {% endif %}
         {% endif %}
       </ul>
       {% if user.is_authenticated %}
